@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      function toggleMenu() {
+        const navLinks = document.getElementById("nav-links");
+        navLinks.classList.toggle("hidden");
+      }
+
+      function toggleDropdown() {
+        const dropdown = document.getElementById("activities-dropdown");
+        dropdown.classList.toggle("hidden");
+      }
+    </script>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <header class="bg-teal-500 text-white">
+      <div class="container mx-auto flex justify-between items-center p-4">
+        <a href="start.html" class="text-xl font-bold">Planify</a>
+        <button
+          id="menu-toggle"
+          class="md:hidden text-white hover:text-gray-300 focus:outline-none"
+          onclick="toggleMenu()"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+        <ul
+          id="nav-links"
+          class="hidden md:flex flex-col md:flex-row gap-4 md:gap-6 items-center bg-teal-500 md:bg-transparent p-4 md:p-0 absolute md:static top-14 left-0 w-full md:w-auto shadow md:shadow-none z-10"
+        >
+          <li><a href="start.html" class="hover:underline">Home</a></li>
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="help.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Form -->
+    <div class="max-w-2xl mx-auto bg-white p-8 mt-8 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-6 text-gray-800">Formular fără titlu</h1>
+      <form action="#" method="POST" class="space-y-6">
+        <div>
+          <label for="songs" class="block text-sm font-medium text-gray-700"
+            >Ce piese vor fi cantate?</label
+          >
+          <select
+            id="songs"
+            name="songs"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+          >
+            <option>Alege</option>
+            <option>Piesa 1</option>
+            <option>Piesa 2</option>
+            <option>Piesa 3</option>
+          </select>
+        </div>
+
+        <div>
+          <label
+            for="event-date"
+            class="block text-sm font-medium text-gray-700"
+            >În ce data va fi evenimentul?</label
+          >
+          <input
+            type="date"
+            id="event-date"
+            name="event-date"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+          />
+        </div>
+
+        <div>
+          <label
+            for="event-time"
+            class="block text-sm font-medium text-gray-700"
+            >Care va fi intervalul de timp în care se va desfășura
+            evenimentul?</label
+          >
+          <input
+            type="time"
+            id="event-time"
+            name="event-time"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+          />
+        </div>
+
+        <!-- Dropdown for Activities -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Activități:</label
+          >
+          <div class="relative">
+            <button
+              type="button"
+              onclick="toggleDropdown()"
+              class="mt-1 w-full bg-white border border-gray-300 rounded-md shadow-sm p-2 text-left flex justify-between items-center focus:ring-teal-500 focus:border-teal-500"
+            >
+              <span id="selected-activity">Cor</span>
+              <svg
+                class="w-5 h-5 text-gray-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <ul
+              id="activities-dropdown"
+              class="hidden absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg"
+            >
+              <li
+                class="p-2 hover:bg-teal-100 cursor-pointer"
+                onclick="selectActivity('Cor')"
+              >
+                Cor
+              </li>
+              <li
+                class="p-2 hover:bg-teal-100 cursor-pointer"
+                onclick="selectActivity('Dans')"
+              >
+                Dans
+              </li>
+              <li
+                class="p-2 hover:bg-teal-100 cursor-pointer"
+                onclick="selectActivity('Teatru')"
+              >
+                Teatru
+              </li>
+              <li
+                class="p-2 hover:bg-teal-100 cursor-pointer"
+                onclick="selectActivity('Concert')"
+              >
+                Concert
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-teal-600"
+        >
+          Salvare
+        </button>
+      </form>
+    </div>
+
+    <script>
+      function selectActivity(activity) {
+        document.getElementById("selected-activity").innerText = activity;
+        document.getElementById("activities-dropdown").classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>
