@@ -15,6 +15,11 @@
         const dropdown = document.getElementById("activities-dropdown");
         dropdown.classList.toggle("hidden");
       }
+
+      function selectActivity(activity) {
+        document.getElementById("selected-activity").innerText = activity;
+        document.getElementById("activities-dropdown").classList.add("hidden");
+      }
     </script>
   </head>
   <body class="bg-gray-100">
@@ -26,6 +31,8 @@
           id="menu-toggle"
           class="md:hidden text-white hover:text-gray-300 focus:outline-none"
           onclick="toggleMenu()"
+          aria-expanded="false"
+          aria-controls="nav-links"
         >
           <svg
             class="w-6 h-6"
@@ -58,9 +65,9 @@
       <h1 class="text-2xl font-bold mb-6 text-gray-800">Formular fără titlu</h1>
       <form action="#" method="POST" class="space-y-6">
         <div>
-          <label for="songs" class="block text-sm font-medium text-gray-700"
-            >Ce piese vor fi cantate?</label
-          >
+          <label for="songs" class="block text-sm font-medium text-gray-700">
+            Ce piese vor fi cantate?
+          </label>
           <select
             id="songs"
             name="songs"
@@ -74,11 +81,9 @@
         </div>
 
         <div>
-          <label
-            for="event-date"
-            class="block text-sm font-medium text-gray-700"
-            >În ce data va fi evenimentul?</label
-          >
+          <label for="event-date" class="block text-sm font-medium text-gray-700">
+            În ce data va fi evenimentul?
+          </label>
           <input
             type="date"
             id="event-date"
@@ -88,12 +93,9 @@
         </div>
 
         <div>
-          <label
-            for="event-time"
-            class="block text-sm font-medium text-gray-700"
-            >Care va fi intervalul de timp în care se va desfășura
-            evenimentul?</label
-          >
+          <label for="event-time" class="block text-sm font-medium text-gray-700">
+            Care va fi intervalul de timp în care se va desfășura evenimentul?
+          </label>
           <input
             type="time"
             id="event-time"
@@ -104,14 +106,14 @@
 
         <!-- Dropdown for Activities -->
         <div>
-          <label class="block text-sm font-medium text-gray-700"
-            >Activități:</label
-          >
+          <label class="block text-sm font-medium text-gray-700">Activități:</label>
           <div class="relative">
             <button
               type="button"
               onclick="toggleDropdown()"
               class="mt-1 w-full bg-white border border-gray-300 rounded-md shadow-sm p-2 text-left flex justify-between items-center focus:ring-teal-500 focus:border-teal-500"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
               <span id="selected-activity">Cor</span>
               <svg
@@ -132,6 +134,7 @@
             <ul
               id="activities-dropdown"
               class="hidden absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg"
+              aria-labelledby="selected-activity"
             >
               <li
                 class="p-2 hover:bg-teal-100 cursor-pointer"
@@ -168,13 +171,13 @@
           Salvare
         </button>
       </form>
-    </div>
-
-    <script>
-      function selectActivity(activity) {
-        document.getElementById("selected-activity").innerText = activity;
-        document.getElementById("activities-dropdown").classList.add("hidden");
-      }
-    </script>
+          <!-- Footer -->
+    <footer class="bg-teal-500 text-white py-6 mt-8">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2024 Planify. Toate drepturile rezervate.</p>
+        
+      </div>
+    </footer>
   </body>
 </html>
+

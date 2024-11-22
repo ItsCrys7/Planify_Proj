@@ -6,102 +6,101 @@
     <title>Planify</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      html {
-        font-size: 16px; /* 1rem = 16px */
+      /* Animația pentru glisare */
+      @keyframes slide-right {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(220%);
+        }
+      }
+
+      .slide-right {
+        animation: slide-right 0.4s forwards;
+      }
+
+      /* Styling suplimentar pentru cercurile decorative */
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .circle-1 {
+        width: 150px;
+        height: 150px;
+        background-color: #6ee7b7;
+        top: 10%;
+        left: 10%;
+      }
+
+      .circle-2 {
+        width: 200px;
+        height: 200px;
+        background-color: #a78bfa;
+        top: 25%;
+        right: 15%;
+      }
+
+      .circle-3 {
+        width: 100px;
+        height: 100px;
+        background-color: #facc15;
+        bottom: 15%;
+        left: 20%;
+      }
+
+      .circle-4 {
+        width: 180px;
+        height: 180px;
+        background-color: #f87171;
+        bottom: 10%;
+        right: 10%;
       }
     </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const burgerMenuButton = document.getElementById("burger-menu");
-        const navLinks = document.getElementById("nav-links");
-
-        burgerMenuButton.addEventListener("click", () => {
-          navLinks.classList.toggle("hidden");
-        });
-      });
-    </script>
   </head>
-  <body class="bg-gray-50 text-gray-800">
-    <!-- Header -->
-    <header class="bg-teal-500 text-white p-[1rem]">
-      <div class="max-w-4xl mx-auto flex justify-between items-center">
-        <a href="index.html" class="text-[2rem] font-bold">Planify</a>
-        <nav>
-          <!-- Burger menu button for small screens -->
-          <button
-            id="burger-menu"
-            class="block md:hidden text-[2rem] focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            ☰
-          </button>
-          <!-- Nav links -->
-          <ul
-            id="nav-links"
-            class="hidden md:flex flex-col md:flex-row gap-[1rem] items-center bg-teal-500 md:bg-transparent p-[1rem] md:p-0 absolute md:static top-[3.5rem] left-0 w-full md:w-auto shadow md:shadow-none z-10"
-          >
-            <li><a href="template1.html" class="hover:underline">Temp 1</a></li>
-            <li><a href="temp2.html" class="hover:bg-black">Temp 2</a></li>
-            <li><a href="about.html" class="hover:text-black">About</a></li>
-            <li><a href="account.html" class="hover:italic">Account</a></li>
-            <li>
-              <a href="projects.html" class="hover:underline">Projects</a>
-            </li>
-            <li>
-              <a href="help.html" class="hover:font-bold hover:text-black"
-                >Help</a
-              >
-            </li>
-          </ul>
-        </nav>
+  <body
+    class="bg-gray-900 text-white h-screen w-full flex items-center justify-center overflow-hidden"
+  >
+    <!-- Container -->
+    <div class="relative h-screen w-full flex items-center justify-center">
+     
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+      <div class="circle circle-4"></div>
+
+     
+      <div class="relative z-10 text-center px-6">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+          Track your daily activity and
+          <span class="text-teal-400">increase productivity</span>
+        </h1>
+        <p class="text-gray-300 mb-8 text-lg md:text-xl">
+          Get started with a simple, user-friendly tracker to stay ahead.
+        </p>
+
+        <!-- Sliding Button -->
+        <button
+          id="start-button"
+          class="relative bg-teal-500 border border-teal-400 text-white font-semibold text-lg px-6 py-3 w-36 rounded-full hover:bg-teal-400 hover:text-black transition-all duration-300"
+          onclick="slideButton()"
+        >
+          Start!
+        </button>
       </div>
-    </header>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="text-center p-[2rem] bg-gray-100">
-      <h2 class="text-[2.5rem] font-bold mb-[1.5rem]">Organize Your Life, Stress-Free</h2>
-      <p class="text-gray-600 mb-[1rem]">Set up your events as you want them</p>
-    </section>
+    <script>
+      function slideButton() {
+        const button = document.getElementById("start-button");
+        // Animație glisare
+        button.classList.add("slide-right");
 
-    <!-- Features -->
-    <section id="features" class="p-[2rem]">
-      <div class="max-w-4xl mx-auto text-center">
-        <h3 class="text-[2rem] font-bold mb-[1.5rem]">
-          Choose what you want to start with
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-[1rem]">
-          <a
-            href="template1.html"
-            class="p-[1rem] bg-white shadow rounded hover:bg-teal-500 hover:text-white"
-          >
-            <h4 class="text-[1.25rem] font-semibold">TEMPLATE I</h4>
-            <p class="text-gray-600">Already set up for you.</p>
-          </a>
-          <a
-            href="temp2.html"
-            class="p-[1rem] bg-white shadow rounded hover:bg-teal-600 hover:text-white"
-          >
-            <h4 class="text-[1.25rem] font-semibold">TEMPLATE II</h4>
-            <p class="text-gray-600">Customize it as you want it.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sign Up -->
-    <section id="signup" class="bg-teal-500 text-white text-center p-[2rem]">
-      <h3 class="text-[2rem] font-bold mb-[1rem]">Ready to Start?</h3>
-      <p class="mb-[1rem]">Sign up today, it's free! Tomorrow might not be.</p>
-      <a
-        href="signup.html"
-        class="bg-white text-teal-500 px-[2rem] py-[1rem] rounded hover:bg-teal-200 hover:text-black"
-        >Sign Up Now</a
-      >
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 text-center p-[1rem]">
-      <p>&copy; 2024 Planify. All Rights Reserved.</p>
-    </footer>
+        setTimeout(() => {
+          window.location.href = "start.html";
+        }, 400); 
+      }
+    </script>
   </body>
 </html>
