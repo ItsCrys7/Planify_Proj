@@ -20,8 +20,7 @@
         animation: slide-right 0.4s forwards;
       } 
 
-
-      /* Styling suplimentar pentru cercurile decorative */
+      /* decoratiuni */
       .circle {
         position: absolute;
         border-radius: 50%;
@@ -99,13 +98,11 @@
       function slideButton() {
         // Selectăm butonul
         const button = document.getElementById("start-button");
-        // Adăugăm clasa pentru animația de glisare
         button.classList.add("slide-right");
 
-        // După animație, navigăm către o altă pagină
         setTimeout(() => {
-          window.location.href = "start.html"; // Înlocuiește cu pagina ta
-        }, 400); // Așteptăm finalizarea animației (500ms)
+          window.location.href = "start.html";
+        }, 400);
       }
     </script>
   </body>
